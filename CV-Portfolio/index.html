@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Portfolio - Imran Muhammad</title>
+  <meta name="description" content="Labo 5 - Mixed Reality - A-Frame">
+  <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+  <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.6.1/dist/aframe-extras.min.js"></script>
+  <script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script>
+
+</head>
+
+<body>
+  <a-scene>
+    <a-assets>
+      <!-- Spawn Room -->
+      <img id="textureFloor" src="assets/images/floor.jpg">
+      <img id="textureWall" src="assets/images/wall.jpg">
+      <img id="door" src="assets/images/door.png">
+      <img id="cinema" src="assets/images/cinema.jpg">
+      <img id="library" src="assets/images/library.jpg">
+      <img id="lab" src="assets/images/lab.jpg">
+
+      <!-- Library -->
+      <img id="textureWallLight" src="assets/images/wallLight.jpg">
+      <img id="library1" src="assets/images/library1.jpg">
+      <img id="library2" src="assets/images/library2.png">
+      <img id="library3" src="assets/images/library3.png">
+
+
+      <!-- Computer Lab -->
+      <img id="textureWallGrey" src="assets/images/wallGrey.jpg">
+
+      <!-- Cinema Room -->
+      <img id="textureWallDark" src="assets/images/wallDark.jpg">
+      <video id="video" autoplay="false" crossorigin="anonymous" src="assets/videos/video_avaapii.mp4"></video>
+      <a-asset-item id="sofa-obj" src="assets/models/sofa.obj"></a-asset-item>
+      <a-asset-item id="sofa-mtl" src="assets/models/sofa.mtl"></a-asset-item>
+      <a-asset-item id="plant-obj" src="assets/models/plant.obj"></a-asset-item>
+      <a-asset-item id="plant-mtl" src="assets/models/plant.mtl"></a-asset-item>
+
+
+
+    </a-assets>
+
+    <!-- are container objects into which components can be attached. Entities are the base of all objects in the scene. Without components, entities neither do nor render anything, similar to empty <div>s -->
+    <!-- light -->
+    <a-entity id="player" camera universal-controls kinematic-body position="0 1.8 0">
+      <a-cursor></a-cursor>
+    </a-entity>
+
+    <!-- Walls -->
+    <a-entity id="walls" static-body material="src: #textureWall"></a-entity>
+
+
+
+    <!-- automatically make the image repeat over the entire floor-->
+    <a-grid id="ground" static-body material="src: #textureFloor"></a-grid>
+
+    <a-sky id="sky" color="#000000"></a-sky>
+    <!--<a-box position="-1 up -3front" rotation="0up 0 0" color="#4CC3D9"></a-box>-->
+
+
+    <!-- Deuren-->
+    <a-box position="-1.489 2.47 -11.133" rotation="0 0 0" height="6" width="3.4" static-body material="src: #door"
+      remove-door-on-click="visible: false"></a-box>
+    <a-box position="-7 2.47 -6" rotation="0 -90 0" height="6" width="3" static-body material="src: #door"
+      remove-door-on-click="visible: false"></a-box>
+    <a-box position="4 2.47 -6" rotation="0 -90 0" height="6" width="3" static-body material="src: #door"
+      remove-door-on-click="visible: false"></a-box>
+
+    <!-- SPAWN -->
+    <a-image src="#cinema" width="2" height="1" rotation="0 -90 0" position="2.95 3.6 -3.52"></a-image>
+    <a-image src="#lab" width="2" height="1" rotation="0 0 0" position="0.9 4 -10.48"></a-image>
+    <a-image src="#library" width="2" height="1" rotation="0 90 0" position="-5.95 4 -8.499"></a-image>
+
+    <!-- Cinema -->
+    <a-video src="#video" width="8" height="3.8" rotation="0 -90 0" position="23.7 2.8 -6"></a-video>
+    <a-plane color="#00000" width="8.4" height="4.2" rotation="0 -90 0" position="23.8 2.8 -6"></a-plane>
+    <a-entity video-controls="src:#video" position="25 1.1 -8.8" rotation="0 -90 0"></a-entity>
+    <a-obj-model scale="3 3 3" src="#sofa-obj" mtl="#sofa-mtl" rotation="0 90 0" position="16 0 -6" static-body></a-obj-model>
+    <a-box static-body width="6" height="2" rotation="0 90 0" position="16 0 -6" visible="false"></a-box>
+    <a-obj-model scale="0.2 0.2 0.2" src="#plant-obj" mtl="#plant-mtl" rotation="0 0 0" position="12.5 0 0" static-body></a-obj-model>
+    <a-obj-model scale="0.2 0.2 0.2" src="#plant-obj" mtl="#plant-mtl" rotation="0 0 0" position="12.5 0 -13"
+      static-body></a-obj-model>
+
+    <!-- Library -->
+    <a-image src="#library1" width="15" height="4" rotation="180 -90 180" position="-26.96 2.5 -6"></a-image>
+    <a-image src="#library2" width="9" height="4" rotation="180 0 180" position="-20.40 2.5 1.49"></a-image>
+    <a-image src="#library3" width="4" height="4" rotation="180 180 -180" position="-20.40 2.5 -13"></a-image>
+
+
+
+    <!-- Lab -->
+    <!-- Lighting 
+      <a-light type="ambient" color="#92455E" intensity="0.4"></a-light>
+      <a-light type="point" color="#fff" distance="5" intensity="0.7" ></a-light>
+    -->
+  </a-scene>
+
+  <script>
+    const map =
+    {
+      // FIELD VIEW PATTERN
+      "data": [
+        0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0,
+        4, 3, 3, 3, 3, 4, 5, 5, 5, 0, 5, 5, 5, 3, 3, 3, 3, 3, 3,
+        4, 0, 0, 0, 0, 4, 0, 1, 1, 0, 1, 1, 0, 3, 0, 0, 0, 0, 3,
+        4, 0, 0, 0, 0, 4, 4, 1, 0, 0, 0, 1, 3, 3, 0, 0, 0, 0, 3,
+        4, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+        4, 0, 0, 0, 0, 4, 4, 1, 0, 0, 0, 1, 3, 3, 0, 0, 0, 0, 3,
+        4, 0, 0, 0, 0, 4, 0, 1, 1, 1, 1, 1, 0, 3, 0, 0, 0, 0, 3,
+        4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3,
+      ],
+      "height": 20,
+      "width": 19,
+    }
+    document.querySelector('a-scene').addEventListener('render-target-loaded', function () {
+      let WALL_SIZE = 3,
+        WALL_HEIGHT = 8;
+      let el = document.querySelector('#walls');
+      let wall;
+
+      for (let x = 0; x < map.height; x++) {
+        for (let y = 0; y < map.width; y++) {
+
+          let i = y * map.width + x;
+          let position = (x - map.width / 2) * WALL_SIZE + ' ' + 1.5 + ' ' + (y - map.height / 2) * WALL_SIZE;
+          if (map.data[i] === 1 || map.data[i] === 3 || map.data[i] === 4 || map.data[i] === 5) {
+            // Create wall
+            wall = document.createElement('a-box');
+            el.appendChild(wall);
+            wall.setAttribute('color', '#fff');
+            wall.setAttribute('material', 'src: #textureWall;');
+            wall.setAttribute('width', WALL_SIZE);
+            wall.setAttribute('height', WALL_HEIGHT);
+            wall.setAttribute('depth', WALL_SIZE);
+            wall.setAttribute('position', position);
+            wall.setAttribute('static-body', '')
+          }
+
+          if (map.data[i] === 2) {
+            // Set player position
+            document.querySelector('#player').setAttribute('position', position);
+          }
+
+          if (map.data[i] === 3) {
+            wall.setAttribute('material', 'src: #textureWallDark;');
+          }
+
+          if (map.data[i] === 4) {
+            wall.setAttribute('material', 'src: #textureWallLight;');
+          }
+
+          if (map.data[i] === 5) {
+            wall.setAttribute('material', 'src: #textureWallGrey;');
+          }
+
+        }
+      }
+      console.info('Walls added.');
+    });
+
+    AFRAME.registerComponent('remove-door-on-click', {
+      init: function () {
+        let data = this.data;
+        let el = this.el;  // <a-box>
+
+        el.addEventListener('click', function () {
+          el.setAttribute('visible', data.visible);
+          el.setAttribute('position', '30 30 30');
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

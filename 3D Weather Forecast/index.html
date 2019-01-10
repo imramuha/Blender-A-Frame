@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://www.x3dom.org/release/x3dom.js"></script>
+    <link rel="stylesheet" href="http://www.x3dom.org/release/x3dom.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <title>Labo 1-3 Mixed Reality</title>
+</head>
+<body>
+</head>
+<body>
+    <h1>Weather Forecast</h1>
+
+    <div class="container">
+    <x3d width="500px" height="400px">      
+      <scene>
+        
+          <!-- Weather Conditions -->
+          <transform translation='-6 2 0'> 
+          <shape> 
+              <appearance> 
+              <material diffuseColor='1 1 1'></material> 
+              </appearance> 
+              <text class="weatherCondition" string="weatherTitle" solid="false" ccw="true" usegeocache="true" lit="true"> <fontstyle family="'Times' 'Orbitron'" size="0.5" horizontal="true" justify="BEGIN " lefttoright="true" spacing="1" style="PLAIN" toptobottom="true" quality="2"></fontstyle> </text>
+          </shape> 
+          </transform>
+
+          <!-- Weather forecast - Right to left/front to back -->
+
+          <transform translation='-6 0 0'> 
+          <shape> 
+              <appearance> 
+              <material class="forecastDayOneColour"  diffuseColor='0.75 0.75 0.75'></material> 
+              </appearance> 
+              <text class="weatherForecastDayOne" string="weatherForecastDayOne" solid="false" ccw="true" usegeocache="true" lit="true"> <fontstyle family="'Times' 'Orbitron'" size="0.4" horizontal="true" justify="BEGIN " lefttoright="true" spacing="1" style="PLAIN" toptobottom="true" quality="2"></fontstyle> </text>
+          </shape> 
+          </transform> 
+          <transform translation='1.6 0 0' scale="0.6 0.6 0.6"> 
+            <scene>
+                <inline url='' class="blenderDayOne" > </inline> 
+            </scene> 
+          </transform> 
+
+          <transform translation='-5 -1 -2'> 
+              <shape> 
+                  <appearance> 
+                  <material class="forecastDayTwoColour"  diffuseColor='0.60 0.60 0.60'></material> 
+                  </appearance> 
+                  <text class="weatherForecastDayTwo"  string="weatherForecastDayTwo" solid="false" ccw="true" usegeocache="true" lit="true"> <fontstyle family="'Times' 'Orbitron'" size="0.4" horizontal="true" justify="BEGIN " lefttoright="true" spacing="1" style="PLAIN" toptobottom="true" quality="2"></fontstyle> </text>
+              </shape> 
+          </transform>
+          <transform translation='2.85 -1 -2' scale="0.5 0.5 0.5"> 
+            <scene>
+                <inline url='' class="blenderDayTwo" > </inline> 
+            </scene> 
+        </transform> 
+
+          <transform translation='-4 -2 -5'> 
+          <shape> 
+              <appearance> 
+              <material class="forecastDayThreeColour" diffuseColor='0.45 0.45 0.45'></material> 
+              </appearance>                    
+              <text  class="weatherForecastDayThree"  string="weatherForecastDayThree" solid="false" ccw="true" usegeocache="true" lit="true"> <fontstyle family="'Times' 'Orbitron'" size="0.4" horizontal="true" justify="BEGIN " lefttoright="true" spacing="1" style="PLAIN" toptobottom="true" quality="2"></fontstyle> </text>
+          </shape> 
+          </transform> 
+          <transform translation='4 -2 -5' scale="0.3 0.3 0.3"> 
+            <scene>
+                <inline url='' class="blenderDayThree" > </inline> 
+            </scene> 
+          </transform> 
+
+
+          <!--Weather title-->
+          <transform translation='-4 -3 0'> 
+              <shape> 
+                  <appearance> 
+                  <material diffuseColor='1 1 1'></material> 
+                  </appearance> 
+                  <text class="weatherTitle" string="weatherTitle" solid="false" ccw="true" usegeocache="true" lit="true"> <fontstyle family="'Times' 'Orbitron'" size="0.4" horizontal="true" justify="BEGIN " lefttoright="true" spacing="1" style="PLAIN" toptobottom="true" quality="2"></fontstyle> </text>
+                </shape> 
+          </transform> 
+          
+      </scene>
+    </x3d>
+    </div>
+
+         <!-- <text class="weatherTitle" string="" solid="false" ccw="true" usegeocache="true" lit="true">
+              <fontstyle family="'Times' 'Orbitron'" size="0.8" horizontal="true" justify="BEGIN " lefttoright="true" spacing="1" style="PLAIN" toptobottom="true" quality="2"></fontstyle>
+            </text>
+            <text class="weatherCondition" string="" solid="false" ccw="true" usegeocache="true" lit="true">
+                  <fontstyle family="'Times' 'Orbitron'" size="0.8" horizontal="true" justify="BEGIN " lefttoright="true" spacing="1" style="PLAIN" toptobottom="true" quality="2"></fontstyle>
+            </text>
+            <text class="weatherForecast" string="" solid="false" ccw="true" usegeocache="true" lit="true">
+              <fontstyle family="'Times' 'Orbitron'" size="0.8" horizontal="true" justify="BEGIN " lefttoright="true" spacing="1" style="PLAIN" toptobottom="true" quality="2"></fontstyle>
+            </text>-->
+
+          <script src="assets/js/utilities.js"></script>
+          <script src="assets/js/services.js"></script>
+          <script src="assets/js/main.js"></script>
+</body>
+</html>
